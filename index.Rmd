@@ -1,0 +1,37 @@
+---
+title: "Home"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Welcome to My Website!
+
+Hello! My name is Irene.
+
+I am currently a MS student at Columbia University.
+
+My academic and research interests include Epidemiology and Clinical Research.
+
+This website introduces my academic background, professional experience, and data science projects.
+
+# About Me
+
+You can learn more about my education, research, and professional experience on my [Resume page](about.html).
+
+# Data Science Project
+
+As part of P8105 Data Science I, I created an interactive dashboard using weather observations from New York.
+
+The dashboard explores temperature patterns and precipitation using interactive visualizations.
+
+You can explore my [Interactive Dashboard](dashboard.html).
+
+# Connect
+
+You can also visit my [GitHub profile](https://github.com/Irenewxx).
