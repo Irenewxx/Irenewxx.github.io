@@ -1,0 +1,72 @@
+
+---
+title: "Academic and Professional Experience"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# About Me
+
+My name is Irene.
+
+I am currently a MS student at Columbia University.
+
+My academic interests include Epidemiology and Clinical Research.
+
+# Education
+
+## Columbia University-Mailman School of Public Health
+
+**MS**, Epidemiology
+
+2025 - 2027
+
+## Sichuan University
+
+**MBBS/MS/MD**, Clinical Pathology
+
+2014 - 2022
+
+# Research Experience
+
+## Research Project 1
+
+**Position:** Graduate Student Researcher
+
+**Institution:** Columbia University
+
+**Description:**
+
+- iCAP-next generation program.
+- Qualitative Research.
+- Summarizing data, and help draft manuscripts.
+
+# Professional Experience
+
+## Position 1
+
+**Organization:** Sichuan University-West China School of Hospital
+
+**Period:** 2019-2022
+
+- Pathology PGY and resident doctor.
+
+# Technical Skills
+
+- **Programming:** R,SAS,SQL
+- **Data Analysis:** Clinical Data Research, survival analysis, clincial research
+- **Other Skills:** Wet-Lab skills
+
+# Publications and Presentations
+
+
+
+# Contact
+
+Email: hyw2105@cumc.columbia.edu
+
+GitHub: [My GitHub Profile](https://github.com/Irenewxx)
+
+Return to [Home](index.html).
