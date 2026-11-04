@@ -1,0 +1,123 @@
+---
+title: "dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+```
+
+
+```{r data_preparation, include=FALSE}
+data("ny_noaa")
+
+ny_noaa_df =
+  ny_noaa %>%
+  filter(id == "USW00094728") %>%
+  separate(
+    date,
+    into = c("year", "month", "day"),
+    sep = "-",
+    convert = TRUE
+  ) %>%
+  filter(year == 2009) %>%
+  mutate(
+    tmax = as.numeric(tmax) / 10,
+    tmin = as.numeric(tmin) / 10,
+    prcp = as.numeric(prcp) / 10,
+    month = factor(
+      month,
+      levels = 1:12,
+      labels = month.abb
+    )
+  ) %>%
+  select(year, month, day, tmax, tmin, prcp)
+ny_noaa_df
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Daily Minimum vs Maximum Temperature
+
+```{r}
+ny_noaa_df %>%
+  filter(
+    !is.na(tmin),
+    !is.na(tmax)
+  ) %>%
+  mutate(
+    text_label = str_c(
+      "Date: ", month, " ", day, ", ", year,
+      "\nTmin: ", tmin, " C",
+      "\nTmax: ", tmax, " C"
+    )
+  ) %>%
+  rename(
+    `Minimum temperature (C)` = tmin,
+    `Maximum temperature (C)` = tmax
+  ) %>%
+  plot_ly(
+    x = ~`Minimum temperature (C)`,
+    y = ~`Maximum temperature (C)`,
+    type = "scatter",
+    mode = "markers",
+    color = ~month,
+    text = ~text_label,
+    alpha = 0.5
+  )
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Monthly Maximum Temperature Distribution
+
+```{r}
+ny_noaa_df %>%
+  filter(
+    !is.na(tmax)
+  ) %>%
+  rename(
+    Month = month,
+    `Daily maximum temperature (C)` = tmax
+  ) %>%
+  plot_ly(
+    y = ~`Daily maximum temperature (C)`,
+    color = ~Month,
+    type = "box",
+    colors = "viridis"
+  )
+
+```
+
+### Monthly Days with Precipitation
+
+```{r}
+ny_noaa_df %>%
+  filter(
+    !is.na(prcp),
+    prcp > 0
+  ) %>%
+  count(month) %>%
+  rename(
+    Month = month,
+    `Days with precipitation` = n
+  ) %>%
+  plot_ly(
+    x = ~Month,
+    y = ~`Days with precipitation`,
+    type = "bar",
+    color = ~Month,
+    colors = "viridis"
+  )
+
+```
+
